@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,7 +17,7 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public void createBoard(CreateBoardRequest request) {
-        if (!validRequest(request)) throw new IllegalArgumentException();
+        if (!validRequest(request)) throw new IllegalArgumentException("UserName and Content cannot be empty");
         Board board = request.toEntity();
         boardRepository.save(board);
     }
@@ -29,7 +30,8 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public void deleteBoard(long id) {
-        boardRepository.deleteById(id);
+        Board board = boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Board not found"));
+        boardRepository.delete(board);
     }
 
     private boolean validRequest(CreateBoardRequest request) {

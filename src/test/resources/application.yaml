@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: devopsTest
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create
+

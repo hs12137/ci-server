@@ -89,6 +89,16 @@ class BoardServiceImplTest {
             //then
             assertEquals(0, boardRepository.findAll().size());
         }
+        @Test
+        void 실패() {
+            //given
+            boardRepository.deleteAll();
+            CreateBoardRequest request = new CreateBoardRequest("testUser", "testContent");
+            boardRepository.save(request.toEntity());
+            Long id = boardRepository.findAll().get(0).getId() - 1;
+            //when & then
+            assertThrows(IllegalArgumentException.class, () -> boardService.deleteBoard(id));
+        }
     }
 
 }
