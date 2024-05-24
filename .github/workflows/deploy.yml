@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  ci:
+  deploy:
     runs-on: "ubuntu-latest"
     permissions:
       contents: read
@@ -18,7 +18,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.PASSWORD }}
+        key: ${{ secrets.KEY }}
         script: |
           cd devops/ci-server
           git pull
