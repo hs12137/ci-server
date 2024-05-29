@@ -2,10 +2,9 @@ spring:
   application:
     name: devopsTest
   datasource:
-    url: jdbc:mysql://localhost:3306/devops_test?serverTimezone=Asia/Seoul
-    username: ${user}
+    url: jdbc:mysql://some-mysql:3306/devops_test?serverTimezone=Asia/Seoul
+    username: ${username}
     password: ${password}
   jpa:
     hibernate:
-      ddl-auto: create
-
+      ddl-auto: none
