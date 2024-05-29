@@ -49,7 +49,7 @@ jobs:
         script: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:prod
           docker rm -f devops-test
-          docker run --name devops-test -p 8080:8080 -e profiles=prod -e username=${{ secrets.SSH_DB_USERNAME }} -e password=${{ secrets.SSH_DB_PASSWORD }} --network server ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:prod
+          docker run -d --name devops-test -p 8080:8080 -e profiles=prod -e username=${{ secrets.SSH_DB_USERNAME }} -e password=${{ secrets.SSH_DB_PASSWORD }} --network server ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:prod
 
 
   dependency-submission:
