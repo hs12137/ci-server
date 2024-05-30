@@ -2,7 +2,7 @@ spring:
   application:
     name: devopsTest
   datasource:
-    url: jdbc:mysql://34.173.100.97:3307/devops_test?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://10.128.0.8:3307/devops_test?serverTimezone=Asia/Seoul
     username: ${username}
     password: ${password}
   jpa:
